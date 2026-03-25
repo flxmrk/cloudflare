@@ -918,6 +918,38 @@ class Settings extends Api
     }
     
     /**
+     * Get WebSockets setting
+     * Gets whether WebSockets are enabled for the zone
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function websockets($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/websockets');
+    }
+
+    /**
+     * Change WebSockets setting
+     * Enable or disable WebSockets for the zone
+     * https://api.cloudflare.com/#zone-settings-change-websockets-setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           Value of the zone setting (default: off)
+     *
+     * @return mixed
+     */
+    public function change_websockets($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/websockets', $data);
+    }
+
+    /**
      * Bot Fight Mode
      * Gets the current settings object for bot fight mode ->result->fight_mode
      *
