@@ -918,6 +918,151 @@ class Settings extends Api
     }
     
     /**
+     * Get HTTP/2 to Origin setting
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function origin_h2($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/origin_h2');
+    }
+
+    /**
+     * Change HTTP/2 to Origin setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           on/off
+     *
+     * @return mixed
+     */
+    public function change_origin_h2($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/origin_h2', $data);
+    }
+
+    /**
+     * Get HTTP/3 (QUIC) setting
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function http3($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/h2_prioritization');
+    }
+
+    /**
+     * Change HTTP/3 (QUIC) setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           on/off
+     *
+     * @return mixed
+     */
+    public function change_http3($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/http3', $data);
+    }
+
+    /**
+     * Get 0-RTT Connection Resumption setting
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function zero_rtt($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/0rtt');
+    }
+
+    /**
+     * Change 0-RTT Connection Resumption setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           on/off
+     *
+     * @return mixed
+     */
+    public function change_zero_rtt($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/0rtt', $data);
+    }
+
+    /**
+     * Get TLS 1.3 setting
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function tls_1_3($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/tls_1_3');
+    }
+
+    /**
+     * Change TLS 1.3 setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           on/off/zrt (zrt = 0-RTT enabled)
+     *
+     * @return mixed
+     */
+    public function change_tls_1_3($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/tls_1_3', $data);
+    }
+
+    /**
+     * Get Onion Routing setting
+     *
+     * @param string $zone_identifier API item identifier tag
+     *
+     * @return mixed
+     */
+    public function opportunistic_onion($zone_identifier)
+    {
+        return $this->get('zones/' . $zone_identifier . '/settings/opportunistic_onion');
+    }
+
+    /**
+     * Change Onion Routing setting
+     *
+     * @param string      $zone_identifier API item identifier tag
+     * @param string|null $value           on/off
+     *
+     * @return mixed
+     */
+    public function change_opportunistic_onion($zone_identifier, $value = null)
+    {
+        $data = [
+            'value' => $value,
+        ];
+
+        return $this->patch('zones/' . $zone_identifier . '/settings/opportunistic_onion', $data);
+    }
+
+    /**
      * Get WebSockets setting
      * Gets whether WebSockets are enabled for the zone
      *
