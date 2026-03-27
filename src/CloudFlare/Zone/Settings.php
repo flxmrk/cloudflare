@@ -918,32 +918,32 @@ class Settings extends Api
     }
     
     /**
-     * Get HTTP/2 to Origin setting
+     * Get HTTP/2 setting
      *
      * @param string $zone_identifier API item identifier tag
      *
      * @return mixed
      */
-    public function origin_h2($zone_identifier)
+    public function http2($zone_identifier)
     {
-        return $this->get('zones/' . $zone_identifier . '/settings/origin_h2');
+        return $this->get('zones/' . $zone_identifier . '/settings/http2');
     }
 
     /**
-     * Change HTTP/2 to Origin setting
+     * Change HTTP/2 setting
      *
      * @param string      $zone_identifier API item identifier tag
      * @param string|null $value           on/off
      *
      * @return mixed
      */
-    public function change_origin_h2($zone_identifier, $value = null)
+    public function change_http2($zone_identifier, $value = null)
     {
         $data = [
             'value' => $value,
         ];
 
-        return $this->patch('zones/' . $zone_identifier . '/settings/origin_h2', $data);
+        return $this->patch('zones/' . $zone_identifier . '/settings/http2', $data);
     }
 
     /**
@@ -955,7 +955,7 @@ class Settings extends Api
      */
     public function http3($zone_identifier)
     {
-        return $this->get('zones/' . $zone_identifier . '/settings/h2_prioritization');
+        return $this->get('zones/' . $zone_identifier . '/settings/http3');
     }
 
     /**
